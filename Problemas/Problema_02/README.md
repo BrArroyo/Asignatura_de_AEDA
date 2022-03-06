@@ -1,0 +1,1 @@
+Escriba un programa que solicite al usuario una cantidad de números y calcule su media.

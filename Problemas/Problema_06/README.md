@@ -1,0 +1,1 @@
+Escriba un programa que solicite al usuario un número, cree una cola de prioridad compuesta por elementos con prioridades aleatorias y la vacíe.

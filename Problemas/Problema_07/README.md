@@ -1,0 +1,1 @@
+Escriba un programa que solicite al usuario un número, cree una cola doble (deque) compuesta por elementos aleatorios y la vacíe.

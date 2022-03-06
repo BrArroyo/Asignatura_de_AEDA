@@ -1,0 +1,1 @@
+Escriba un programa que solicite al usuario un número, cree una pila compuesta por números aleatorios y la vacíe.

@@ -26,6 +26,7 @@ class Cell;
 #define LIFE_GAME_GRID_H_
 
 #include <stdlib.h>
+#include <unistd.h>
 
 #include "cell.h"
 
@@ -42,18 +43,29 @@ class Cell;
  */
 class Grid {
   public:
-    Grid(int row, int col);
+    Grid(int row, int col, int turns);
     ~Grid();
 
     const Cell& GetCell(int, int) const;
+    int GetRow() const;
+    int GetCol() const; 
+
+    bool SetInitCells(int, int);
+    
+    void PlayGame();
 
     void NextGeneration();
+    
+    void ViewGrid();
+    friend std::ostream& operator<<(std::ostream&, const Grid&);
 
   private:
+    void SetPosition();
+
     int row_;
     int col_;
-    
-    Cell **grid_;
+    int turns_;    
+    Cell **grid_;    
 };
 
 #endif  // LIFE_GAME_GRID_H_

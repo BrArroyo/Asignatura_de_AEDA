@@ -24,6 +24,7 @@
  */
 
 #include <iostream>
+#include <unistd.h>
 
 #include "../include/cell.h"
 #include "../include/grid.h"
@@ -44,7 +45,7 @@ void menu(int argc, char * argv[]) {
 
 int main(int argc, char * argv[]) {  
   menu(argc, argv);
-  int row, col, count;
+  int row, col, turns, live;
   
   std::cout << "Indica los siguientes parametros " << std::endl;
   std::cout << "Número de filas de la rejilla: ";
@@ -52,14 +53,30 @@ int main(int argc, char * argv[]) {
   std::cout << "Número de columnas de la rejilla: ";
   std::cin >> col;
   std::cout << "Número de turnos: ";
-  std::cin >> count;
-  std::cout << std::endl << std::endl;
+  std::cin >> turns;
+  std::cout << std::endl;
 
-  Grid grid(row, col);
+  Grid grid(row, col, turns);
 
-  for (int i = 0; i < count; ++i) {
-    grid.NextGeneration();
+  std::cout << "Cuantas células quieres vivas: ";
+  std::cin >> live;
+  
+  int aux = 1;
+  while (live != 0) {
+    int row_aux, col_aux;
+    std::cout << "Indica la fila en la que se encuentra la célula " << aux << ": ";
+    std::cin >> row_aux;
+    std::cout << "Indica la columna en la que se encuentra la célula " << aux << ": ";    
+    std::cin >> col_aux;
+    
+    if (grid.SetInitCells(row_aux, col_aux)) {
+      --live;
+      ++aux;
+    }
+    std::cout << std::endl;  
   }
+  
+  grid.PlayGame();
 
   return 0;
 }

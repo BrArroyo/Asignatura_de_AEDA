@@ -54,6 +54,8 @@ class Cell {
 
     State GetState() const;
     void SetState(State);
+    void SetPosition(std::pair<int, int>);
+    std::pair<int, int> GetPosition() const;
     
     void UpdateState();
     int Neighbors(const Grid&); 
@@ -61,6 +63,7 @@ class Cell {
     friend std::ostream& operator<<(std::ostream&, const Cell&);    
 
   private:
+    int live_neighbors_;  
     State state_;
     std::pair<int, int> position_;  
 };
