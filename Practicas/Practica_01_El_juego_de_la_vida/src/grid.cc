@@ -162,5 +162,3 @@ void Grid::SetPosition() {
     }  
   }
 }
-
-

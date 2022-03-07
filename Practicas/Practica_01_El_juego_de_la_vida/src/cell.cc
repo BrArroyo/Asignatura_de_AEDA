@@ -136,4 +136,3 @@ std::ostream& operator<<(std::ostream& os, const Cell& cell) {
   }
   return os;
 }
-
