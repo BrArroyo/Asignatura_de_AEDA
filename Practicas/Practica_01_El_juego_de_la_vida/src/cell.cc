@@ -14,42 +14,71 @@
  * 
  * @brief Desarrollo de las funciones de la clase Cell 
  * 
- * La función de la clase Cell es 
+ * La función de la clase Cell es representar una célula para el juego
+ * de la vida 
  *  
  * Historial de versiones:
  *   01/03/2022 - Ver 0.1 Creación y primera versión del código
+ *   07/03/2022 - Ver 1.0 Versión terminada y comentada
  */
 
 #include "../include/cell.h"
 
+/**
+ * @brief Construct a new Cell:: Cell object
+ * 
+ */
 Cell::Cell() {
   state_ = dead;
   live_neighbors_ = 0; 
 }
 
+/**
+ * @brief Destroy the Cell:: Cell object
+ * 
+ */
 Cell::~Cell() {
 
 }
 
+/**
+ * @brief Getter de state_
+ * 
+ * @return State 
+ */
 State Cell::GetState() const {
   return state_;
 }
 
-
+/**
+ * @brief Setter de tate_
+ * 
+ * @param state 
+ */
 void Cell::SetState(State state) {
   state_ = state;  
 }
 
-void Cell::SetPosition(std::pair<int, int> position) {
-  position_ = position;
-}
-
+/**
+ * @brief Getter de position_
+ * 
+ * @return std::pair<int, int> 
+ */
 std::pair<int, int> Cell::GetPosition() const {
   return position_;
 }
 
 /**
- * @brief 
+ * @brief Setter de position_
+ * 
+ * @param position 
+ */
+void Cell::SetPosition(std::pair<int, int> position) {
+  position_ = position;
+}
+
+/**
+ * @brief Método para actualizar el estado de la célula según el número de vecinos "vivos"
  * 
  */
 void Cell::UpdateState() {
@@ -69,9 +98,9 @@ void Cell::UpdateState() {
 }
 
 /**
- * @brief 
+ * @brief Método que comprueba el estado de los vecinos alrededor de la célula
  * 
- * @return int 
+ * @return int Cantidad de vecinos vivos
  */
 int Cell::Neighbors(const Grid& grid) {
   live_neighbors_ = 0;  
@@ -124,7 +153,7 @@ int Cell::Neighbors(const Grid& grid) {
 }
 
 /**
- * @brief 
+ * @brief Salida por pantalla para mostrar la célula
  * 
  * @return std::ostream& 
  */

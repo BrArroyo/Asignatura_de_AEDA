@@ -14,11 +14,14 @@
  * 
  * @brief Estructura y definición de la clase Cell 
  * 
- * La función de la clase Cell es 
+ * La función de la clase Cell es representar una célula para el juego
+ * de la vida
  *  
  * Historial de versiones:
  *   01/03/2022 - Ver 0.1 Creación y primera versión del código
+ *   07/03/2022 - Ver 1.0 Versión terminada y comentada
  */
+
 class Grid;
 
 #ifndef LIFE_GAME_CELL_H_
@@ -36,16 +39,17 @@ enum State {dead = 0, live = 1};
  * @brief La función de la clase Cell es la representación de la célula
  * 
  * Funciones:
- *   Constructor
- *   Destructor
+ *   Constructor: Constructor por defecto
+ *   Destructor: Destructor
  *   Setter y getters de los atributos
- *   void UpdateState(): 
- *   int Neighbors(const Grid&):
- *   friend std::ostream& operator<<(std::ostream&, const Cell&):
+ *   void UpdateState(): Método para actualizar el estado de la célula según el número de vecinos "vivos"
+ *   int Neighbors(const Grid&): Método que comprueba el estado de los vecinos alrededor de la célula
+ *   friend std::ostream& operator<<(std::ostream&, const Cell&): salida por pantalla para mostrar la célula
  * 
  * Atributos:
- *   State state_:
- *   std::pair<int, int> position_:       
+ *   int live_neighbors_: Atributo que guarda cuantos vecinos están "vivos"
+ *   State state_: Atributo que guarda el estado actual de la célula
+ *   std::pair<int, int> position_: Atributo que guarda la posición de la célula en la rejilla.       
  */
 class Cell {
   public:
@@ -54,9 +58,10 @@ class Cell {
 
     State GetState() const;
     void SetState(State);
-    void SetPosition(std::pair<int, int>);
+
     std::pair<int, int> GetPosition() const;
-    
+    void SetPosition(std::pair<int, int>);
+        
     void UpdateState();
     int Neighbors(const Grid&); 
     

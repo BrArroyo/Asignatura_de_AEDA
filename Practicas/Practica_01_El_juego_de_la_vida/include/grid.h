@@ -1,5 +1,5 @@
 /**
- * Archivo grid.h: Clase Grip.
+ * Archivo grid.h: Clase Grid.
  * 
  * Universidad de La Laguna
  * Escuela Superior de Ingenieria y Tecnologia
@@ -12,12 +12,14 @@
  * @email alu0101123677@ull.edu.es
  * @date 01/03/2022
  * 
- * @brief Estructura y definición de la clase Grip 
+ * @brief Estructura y definición de la clase Grid 
  * 
- * La función de la clase Grip es 
+ * La función de la clase Grid es es representar una rejilla para el juego
+ * de la vida
  *  
  * Historial de versiones:
  *   01/03/2022 - Ver 0.1 Creación y primera versión del código
+ *   07/03/2022 - Ver 1.0 Versión terminada y comentada
  */
 
 class Cell;
@@ -36,10 +38,22 @@ class Cell;
  * @brief La función de la clase Grid es la representación de la rejilla
  * 
  * Funciones:
- *   Constructor
+ *   Constructor parametrizado
  *   Destructor
+ *   Getters
+ *   bool SetInitCells(int, int): Método para indicar las primeras células vivas
+ *   void PlayGame(): Método para inicializar el juego de la vida
+ *   NextGeneration: Método para calcular, cambiar y mostrar el siguiente turno.
+ *   void ViewGrid(): Método para visualizar el juego de la vida
+ *   friend std::ostream& operator<<(std::ostream&, const Grid&): Método para visualizar el juego de la vida
+ *   void SetPosition(): Método para asignar las posiciones a las células  
  * 
- * Atributos:  
+ * Atributos:
+ *   int row_: Atributo que guarda las filas de la rejilla
+ *   int col_: Atributo que guarda las columnas de la rejilla
+ *   int turns_: Atributo que guarda los turnos del juego de la vida
+ *   Cell **grid_: Atributo para representar la rejilla de células  
+ *   
  */
 class Grid {
   public:

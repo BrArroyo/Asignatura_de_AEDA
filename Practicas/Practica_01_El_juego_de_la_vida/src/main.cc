@@ -12,30 +12,59 @@
  * @email alu0101123677@ull.edu.es
  * @date 01/03/2022
  * 
- * @brief 
+ * @brief Juego de la vida con células "vivas" o "muertas"
  * 
- * La función del siguiente programa es la implementación  
+ * La función del siguiente programa es la implementación de una rejilla con células
+ * para de esta manera simular el juego de la vida.
+ * 
+ * Para compilar el programa usar la instrucción make en el directorio raíz del proyecto
+ * $ make
+ * 
+ * Para compilar el programa realizar:
+ * $ ./life_game  
  * 
  * En caso de que sea necesario se puede acceder a la ayuda con
- *   ./life_game [-h|--help] 
+ * $ ./life_game [-h|--help] 
  * 
  * Historial de versiones:
  *   01/03/2022 - Ver 0.1 Creación y primera versión del código
+ *   07/03/2022 - Ver 1.0 Versión terminada y comentada
  */
 
 #include <iostream>
 #include <unistd.h>
+#include <fstream>
 
 #include "../include/cell.h"
 #include "../include/grid.h"
 
-void menu(int argc, char * argv[]) {
+
+void Help() {
+  std::ifstream file_in;
+  file_in.open("help.txt", std::ios::in);
+
+  if (file_in.fail()) {
+    std::cout << "No se pudo abrir el archivo" << std::endl;
+    exit(1); 
+  }
+  
+  std::string aux;
+  while (!file_in.eof()) {
+    std::string aux;
+    getline(file_in, aux);
+    std::cout << aux << std::endl;
+  }  
+
+  file_in.close(); 
+}
+
+void Menu(int argc, char * argv[]) {
   switch (argc) {
     case 1:
       std::cout << "Bienenvenido al Programa del juego de la Vida" << std::endl;
       break;
     case 2:
-      std::cout << "Help" << std::endl;
+      Help();
       exit(0);
       break;  
     default:
@@ -44,7 +73,7 @@ void menu(int argc, char * argv[]) {
 }
 
 int main(int argc, char * argv[]) {  
-  menu(argc, argv);
+  Menu(argc, argv);
   int row, col, turns, live;
   
   std::cout << "Indica los siguientes parametros " << std::endl;
