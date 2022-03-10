@@ -104,17 +104,6 @@ void Cell::UpdateState() {
  */
 int Cell::Neighbors(const Grid& grid) {
   live_neighbors_ = 0;  
-
-  /* Averiguar como funcionar con doble bucle
-  for (int i = position_.first - 1; i <= position_.first + 1; i++) {
-    for (int j = position_.second - 1; j <= position_.second + 1; j++) {
-      if(i != position_.first && j != position_.second) {
-        if (grid.GetCell(i, j).GetState() == live) {
-          live_neighbors_++;
-        }
-      }
-    }
-  }*/   
   
   // i - 1, j - 1
   if(grid.GetCell(position_.first - 1, position_.second - 1).GetState() == live) {
