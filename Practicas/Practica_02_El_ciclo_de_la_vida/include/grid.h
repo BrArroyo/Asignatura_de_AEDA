@@ -6,11 +6,11 @@
  * Grado en Ingeniería Informática
  * Asignatura: Algoritmos y Estructura de Datos Avanzados
  * Curso: 2º
- * Práctica 01: El juego de la vida 
+ * Práctica 02: El ciclo de la vida 
  *
  * @author Bruno Lorenzo Arroyo Pedraza
  * @email alu0101123677@ull.edu.es
- * @date 01/03/2022
+ * @date 12/03/2022
  * 
  * @brief Estructura y definición de la clase Grid 
  * 
@@ -20,17 +20,24 @@
  * Historial de versiones:
  *   01/03/2022 - Ver 0.1 Creación y primera versión del código
  *   07/03/2022 - Ver 1.0 Versión terminada y comentada
+ *   12/03/2022 - Ver 1.1 Inicio de la parte 2 de la práctica
+ *   13/03/2022 - Ver 2.0 Versión terminada y comentada  
  */
 
+class Cell;
 
-#ifndef LIFE_GAME_GRID_H_
-#define LIFE_GAME_GRID_H_
+#ifndef LIFE_CYCLE_GRID_H_
+#define LIFE_CYCLE_GRID_H_
 
 #include <stdlib.h>
 #include <unistd.h>
 
 #include "cell.h"
-class Cell;
+#include "state_dead.h"
+#include "state_egg.h"
+#include "state_larva.h"
+#include "state_pupa.h"
+#include "state_adult.h"
 
 /**
  * @class Grid
@@ -64,7 +71,7 @@ class Grid {
     int GetRow() const;
     int GetCol() const; 
 
-    bool SetInitCells(int, int);
+    bool SetInitCells(int, int, char);
     
     void PlayGame();
 
@@ -82,4 +89,4 @@ class Grid {
     Cell **grid_;    
 };
 
-#endif  // LIFE_GAME_GRID_H_
+#endif  // LIFE_CYCLE_GRID_H_

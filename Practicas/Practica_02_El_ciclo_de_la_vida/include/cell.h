@@ -6,11 +6,11 @@
  * Grado en Ingeniería Informática
  * Asignatura: Algoritmos y Estructura de Datos Avanzados
  * Curso: 2º
- * Práctica 01: El juego de la vida 
+ * Práctica 02: El ciclo de la vida 
  *
  * @author Bruno Lorenzo Arroyo Pedraza
  * @email alu0101123677@ull.edu.es
- * @date 01/03/2022
+ * @date 12/03/2022
  * 
  * @brief Estructura y definición de la clase Cell 
  * 
@@ -20,19 +20,25 @@
  * Historial de versiones:
  *   01/03/2022 - Ver 0.1 Creación y primera versión del código
  *   07/03/2022 - Ver 1.0 Versión terminada y comentada
+ *   12/03/2022 - Ver 1.1 Inicio de la parte 2 de la práctica
+ *   13/03/2022 - Ver 2.0 Versión terminada y comentada  
  */
 
+class Grid;
+class State;
 
-
-#ifndef LIFE_GAME_CELL_H_
-#define LIFE_GAME_CELL_H_
+#ifndef LIFE_CYCLE_CELL_H_
+#define LIFE_CYCLE_CELL_H_
 
 #include <iostream>
 
 #include "grid.h"
-class Grid;
-
-enum State {dead = 0, live = 1};
+#include "state.h"
+#include "state_dead.h"
+#include "state_egg.h"
+#include "state_larva.h"
+#include "state_adult.h"
+#include "state_pupa.h"
 
 /**
  * @class Cell
@@ -57,21 +63,21 @@ class Cell {
     Cell();
     ~Cell();
 
-    State GetState() const;
-    void SetState(State);
-
+    char GetState() const;
+    void SetState(State*); 
+    
     std::pair<int, int> GetPosition() const;
     void SetPosition(std::pair<int, int>);
         
     void UpdateState();
-    int Neighbors(const Grid&); 
+
+    void Neighbors(const Grid&); 
     
     friend std::ostream& operator<<(std::ostream&, const Cell&);    
 
   private:
-    int live_neighbors_;  
-    State state_;
+    State *state_;
     std::pair<int, int> position_;  
 };
 
-#endif  // LIFE_GAME_CELL_H_
+#endif  // LIFE_CYCLE_CELL_H_
