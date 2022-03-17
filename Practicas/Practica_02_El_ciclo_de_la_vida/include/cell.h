@@ -54,8 +54,7 @@ class State;
  *   friend std::ostream& operator<<(std::ostream&, const Cell&): salida por pantalla para mostrar la célula
  * 
  * Atributos:
- *   int live_neighbors_: Atributo que guarda cuantos vecinos están "vivos"
- *   State state_: Atributo que guarda el estado actual de la célula
+ *   State *state_: Atributo que guarda el estado actual de la célula
  *   std::pair<int, int> position_: Atributo que guarda la posición de la célula en la rejilla.       
  */
 class Cell {
