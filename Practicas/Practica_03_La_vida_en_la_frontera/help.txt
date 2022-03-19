@@ -1,0 +1,34 @@
+La función del programa border life es la implementación de una rejilla con células
+para de esta manera simular el juego de la vida con distintos modelos de rejilla.
+ 
+Para compilar el programa usar la instrucción make en el directorio raíz del proyecto
+$ make
+ 
+Para ejecutar el programa realizar:
+$ ./border_life  
+ 
+En caso de que sea necesario se puede acceder a la ayuda con
+$ ./border_life [-h|--help] 
+
+El funcionamiento del programa principal es el siguiente:
+
+  a. Solicita el tamaño de rejilla, N y M, y el número máximo de turnos que tendrá el juego.
+
+  b. Crea un objeto Grid con todas sus células en estado "muerta"
+
+  c. Solicita las posiciones de las células que deben estar en estado "viva" en el turno 0
+  y actualiza el estado en dichas células de la rejilla.
+
+  d.Muestra por pantalla el estado de la rejilla.
+
+  e. Ejecuta un bucle donde cada iteración se corresponde a un turno en la evolución de
+  juego. En cada turno se actualizan y se muestran por pantalla el estado de las células de la
+  rejilla.
+
+El juego contiene las siguientes reglas:
+
+  1. Una célula "muerta" con exactamente 3 células vecinas con estado "viva" pasa 
+  al estado "viva" en el siguiente turno. En cualquier otro caso permanece "muerta".
+
+  2. Una célula "viva" con 2 ó 3 células vecinas con estado "viva" continúa "viva" en el
+  siguiente turno. En cualquier otro caso pasa al estado "muerta".
