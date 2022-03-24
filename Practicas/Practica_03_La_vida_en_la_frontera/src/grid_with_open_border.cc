@@ -23,6 +23,7 @@
  *   12/03/2022 - Ver 1.1 Inicio de la parte 2 de la práctica
  *   13/03/2022 - Ver 2.0 Versión terminada y comentada
  *   20/03/2022 - Ver 2.1 Inicio de la parte 3 de la práctica  
+ *   21/03/2022 - Ver 3.0 Versión terminada y comentada  
  */
 
 #include "../include/grid_with_open_border.h"
@@ -77,11 +78,21 @@ const Cell& GridWithOpenBorder::GetCell(int row, int col) {
   return *(*(grid_ + row) + col);
 }
 
-
+/**
+ * @brief Getter de una célula de la rejilla
+ * 
+ * @param row 
+ * @param col 
+ * @return Cell& 
+ */
 Cell& GridWithOpenBorder::GetCell(int row, int col) const {
   return *(*(grid_ + row) + col);
 }
 
+/**
+ * @brief Método para calcular, cambiar y mostrar el siguiente turno.
+ * 
+ */
 void GridWithOpenBorder::NextGeneration() {
   for (int i = 1; i < row_ - 1; ++i) {
     for (int j = 1; j < col_ - 1; ++j) {
@@ -97,7 +108,14 @@ void GridWithOpenBorder::NextGeneration() {
   *this >> std::cout;
 }  
 
-
+/**
+ * @brief Método para indicar las primeras células vivas 
+ * 
+ * @param row 
+ * @param col 
+ * @return true 
+ * @return false 
+ */
 bool GridWithOpenBorder::SetInitPosition(int row, int col) {
   if (row < 0 || col < 0 || row > row_ - 3 || col > col_ - 3) {
     std::cout << "las coordenadas no son validas" << std::endl;    

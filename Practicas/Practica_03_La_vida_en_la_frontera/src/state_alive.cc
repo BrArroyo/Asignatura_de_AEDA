@@ -18,7 +18,8 @@
  * representando el estado muerto
  *  
  * Historial de versiones:
- *   20/03/2022 - Ver 2.1 Inicio de la parte 3 de la práctica   
+ *   20/03/2022 - Ver 2.1 Inicio de la parte 3 de la práctica
+ *   21/03/2022 - Ver 3.0 Versión terminada y comentada  
  */
 
 #include "../include/state_alive.h"

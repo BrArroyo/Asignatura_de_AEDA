@@ -22,7 +22,8 @@
  *   07/03/2022 - Ver 1.0 Versión terminada y comentada
  *   12/03/2022 - Ver 1.1 Inicio de la parte 2 de la práctica
  *   13/03/2022 - Ver 2.0 Versión terminada y comentada
- *   20/03/2022 - Ver 2.1 Inicio de la parte 3 de la práctica    
+ *   20/03/2022 - Ver 2.1 Inicio de la parte 3 de la práctica
+ *   21/03/2022 - Ver 3.0 Versión terminada y comentada      
  */
 
 class Grid;

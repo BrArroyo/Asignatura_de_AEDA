@@ -14,7 +14,7 @@
  * 
  * @brief Estructura y definición de la clase GridWithOpenBorder 
  * 
- * La función de la clase GridWithOpenBorder es representar una rejilla  frontera abierta para el juego
+ * La función de la clase GridWithOpenBorder es representar una rejilla frontera abierta para el juego
  * de la vida
  *  
  * Historial de versiones:
@@ -22,7 +22,8 @@
  *   07/03/2022 - Ver 1.0 Versión terminada y comentada
  *   12/03/2022 - Ver 1.1 Inicio de la parte 2 de la práctica
  *   13/03/2022 - Ver 2.0 Versión terminada y comentada
- *   20/03/2022 - Ver 2.1 Inicio de la parte 3 de la práctica    
+ *   20/03/2022 - Ver 2.1 Inicio de la parte 3 de la práctica
+ *   21/03/2022 - Ver 3.0 Versión terminada y comentada    
  */
 
 class Cell;
@@ -42,18 +43,15 @@ class Grid;
 /**
  * @class GridWithOpenBorder
  * 
- * @brief La función de la clase Grid es la representación de la rejilla
+ * @brief La función de la clase GridWithOpenBorder es la representación de la rejilla con frontera abierta
  * 
  * Funciones:
  *   Constructor parametrizado
  *   Destructor
  *   Getters
- *   bool SetInitCells(int, int): Método para indicar las primeras células vivas
- *   void PlayGame(): Método para inicializar el juego de la vida
  *   NextGeneration: Método para calcular, cambiar y mostrar el siguiente turno.
- *   void ViewGrid(): Método para visualizar el juego de la vida
- *   friend std::ostream& operator<<(std::ostream&, const Grid&): Método para visualizar el juego de la vida
- *   void SetPosition(): Método para asignar las posiciones a las células  
+ *   bool SetInitPosition(int, int): Método para indicar las primeras células vivas 
+ *   std::ostream& operator>>(std::ostream& os): Método para visualizar el juego de la vida
  * 
  * Atributos:
  *   int row_: Atributo que guarda las filas de la rejilla

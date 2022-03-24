@@ -19,6 +19,7 @@
  *  
  * Historial de versiones:
  *   20/03/2022 - Ver 2.1 Inicio de la parte 3 de la práctica    
+ *   21/03/2022 - Ver 3.0 Versión terminada y comentada  
  */
 
 class Cell;
@@ -42,6 +43,11 @@ class GridWithReflectiveBorder;
  * @brief La función de la clase Grid es la representación de la rejilla
  * 
  * Funciones:
+ *   Destructor
+ *   Getters
+ *   NextGeneration: Método para calcular, cambiar y mostrar el siguiente turno.
+ *   bool SetInitPosition(int, int): Método para indicar las primeras células vivas 
+ *   std::ostream& operator>>(std::ostream& os): Método para visualizar el juego de la vida
  * 
  * Atributos:
  *   

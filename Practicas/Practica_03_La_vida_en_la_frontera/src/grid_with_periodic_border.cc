@@ -18,7 +18,8 @@
  * para el juego de la vida
  *  
  * Historial de versiones:
- *   20/03/2022 - Ver 2.1 Inicio de la parte 3 de la práctica  
+ *   20/03/2022 - Ver 2.1 Inicio de la parte 3 de la práctica 
+ *   21/03/2022 - Ver 3.0 Versión terminada y comentada   
  */
 
 #include "../include/grid_with_periodic_border.h"
@@ -73,7 +74,13 @@ const Cell& GridWithPeriodicBorder::GetCell(int row, int col) {
   return *(*(grid_ + row) + col);
 }
 
-
+/**
+ * @brief Getter de una célula de la rejilla
+ * 
+ * @param row 
+ * @param col 
+ * @return Cell& 
+ */
 Cell& GridWithPeriodicBorder::GetCell(int row, int col) const {
   if (row == -1 && col == -1) {  // Esquina superior izquierda
     return *(*(grid_ + row_- 1) + col_ - 1);  
@@ -96,6 +103,10 @@ Cell& GridWithPeriodicBorder::GetCell(int row, int col) const {
   return *(*(grid_ + row) + col);
 }
 
+/**
+ * @brief Método para calcular, cambiar y mostrar el siguiente turno.
+ * 
+ */
 void GridWithPeriodicBorder::NextGeneration() {
   for (int i = 0; i < row_; ++i) {
     for (int j = 0; j < col_; ++j) {
@@ -111,7 +122,14 @@ void GridWithPeriodicBorder::NextGeneration() {
   *this >> std::cout;
 }  
 
-
+/**
+ * @brief Método para indicar las primeras células vivas 
+ * 
+ * @param row 
+ * @param col 
+ * @return true 
+ * @return false 
+ */
 bool GridWithPeriodicBorder::SetInitPosition(int row, int col) {
   if (row < 0 || col < 0 || row >= row_ || col >= col_ ) {
     std::cout << "las coordenadas no son validas" << std::endl;    

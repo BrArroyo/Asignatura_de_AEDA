@@ -12,7 +12,7 @@ $ ./border_life [-h|--help]
 
 El funcionamiento del programa principal es el siguiente:
 
-  a. Solicita el tamaño de rejilla, N y M, y el número máximo de turnos que tendrá el juego.
+  a. Solicita el tamaño de rejilla, N y M, y el tipo de rejilla.
 
   b. Crea un objeto Grid con todas sus células en estado "muerta"
 
@@ -24,6 +24,8 @@ El funcionamiento del programa principal es el siguiente:
   e. Ejecuta un bucle donde cada iteración se corresponde a un turno en la evolución de
   juego. En cada turno se actualizan y se muestran por pantalla el estado de las células de la
   rejilla.
+
+  f. Para terminar la ejecución del programa pulsar "enter"
 
 El juego contiene las siguientes reglas:
 
