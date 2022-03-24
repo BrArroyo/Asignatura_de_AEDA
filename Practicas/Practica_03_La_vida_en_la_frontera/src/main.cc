@@ -20,10 +20,12 @@
  * $ make
  * 
  * Para compilar el programa realizar:
- * $ ./life_cycle  
+ * $ ./border_life  
  * 
  * En caso de que sea necesario se puede acceder a la ayuda con
- * $ ./life_cycle [-h|--help] 
+ * $ ./border_life [-h|--help] 
+ * 
+ * Para terminar la ejecución, una vez que se estén mostrando las rejillas pulsar "enter"
  * 
  * Historial de versiones:
  *   01/03/2022 - Ver 0.1 Creación y primera versión del código
