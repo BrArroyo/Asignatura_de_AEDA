@@ -102,7 +102,6 @@ int main(int argc, char * argv[]) {
   std::cin >> col;
   std::cout << std::endl;
   
-  //Comprobar que esto este bien 
   switch (type) {
   case 1:
     grid = new GridWithOpenBorder(row, col);
