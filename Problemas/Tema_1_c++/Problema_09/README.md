@@ -1,0 +1,1 @@
+Escriba un programa que cree una lista enlazada mediante plantillas e implemente las operaciones básicas sobre ella.
