@@ -1,0 +1,1 @@
+Escribe un procedimiento en C++ que ordene la primera mitad de la secuencia o vector por el método de selección de menor a mayor, luego ordene la segunda mitad también por el método de inserción, pero de mayor a menor, y finalmente mezcle ambas mitades de forma que el vector quede ordenado de mayor a menor ordenada.

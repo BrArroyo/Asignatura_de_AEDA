@@ -1,0 +1,1 @@
+Escribe un procedimiento en C++ que ordene de menor a mayor por el método de ordenación por inserción los elementos de las posiciones impares entre sí, y luego ordene de mayor a menor por el método de ordenación por selección los elementos de las posiciones pares, y finalmente mezcle ambas partes.

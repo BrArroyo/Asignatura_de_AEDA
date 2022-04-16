@@ -1,0 +1,1 @@
+Escribe un procedimiento C++ que aplique el procedimiento de ordenación siguiente: se aplica una iteración del método Quicksort para dividir la secuencia en dos partes y se ordena, la primera parte por inserción y la segunda por selección.
