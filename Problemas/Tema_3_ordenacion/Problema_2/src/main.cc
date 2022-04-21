@@ -18,7 +18,7 @@
 void Sort(int *sec, int N) {
   int i, j, k, max, x;
   int aux[N]; 
-
+  
   // Elementos de posiciones impares: 
   // inserción de menor a mayor
   for (i = 3; i < N; i+=2) {
