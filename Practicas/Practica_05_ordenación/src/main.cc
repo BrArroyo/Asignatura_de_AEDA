@@ -43,6 +43,7 @@
 #include "../include/sort_shellsort.h"
 #include "../include/sort_radixsort.h"
 #include "../include/sort_heapsort.h"
+#include "../include/sort_test.h"
 
 /**
  * @brief Método para mostrar la ayuda del programa
@@ -97,46 +98,6 @@ void Menu(int argc, char * argv[]) {
 int main(int argc, char * argv[]) {  
   Menu(argc, argv);
   int option = 0;
-  Sort *function;
-
-  // Algoritmo a implementar
-  option = 0;  
-  std::cout << "¿Que algoritmo de ordenación desea ejecutar?" << std::endl;
-  std::cout << "1. Ordenación por Selección" << std::endl; 
-  std::cout << "2. Ordenación por QuickSort" << std::endl; 
-  std::cout << "3. Ordenación por Incrementos Decrecientes" << std::endl; 
-  std::cout << "4. Ordenación por HeapSort" << std::endl; 
-  std::cout << "5. Ordenación por RadixSort" << std::endl;
-  bool quit = false;
-  while (!quit) {
-    std::cout << "→ ";
-    std::cin >> option;
-    switch(option) {
-      case 1:
-        function = new SortSelection;
-        quit = true;
-        break;
-      case 2:
-        function = new QuickSort;
-        quit = true;
-        break;
-      case 3:
-        function = new ShellSort;
-        quit = true;
-        break;
-      case 4:
-        function = new HeapSort;
-        quit = true;
-        break;
-      case 5:
-        function = new RadixSort;
-        quit = true;
-        break;
-      default:
-        std::cout << "No se ha elegido una opción correcta" << std::endl; 
-        break;
-    }
-  } 
   
   // Tamaño de la secuencia
   int size = 0;
@@ -174,23 +135,64 @@ int main(int argc, char * argv[]) {
     for (int i = 0; i < size; ++i) {
       sequence[i] = 1000+rand()%(10000-1000);
     }
+  }
+  
+  SortTest<int> sort(new SortSelection<int>);
+
+  // Menú
+  bool quit = false;
+  option = 0;
+  quit = false;  
+  while (!quit) {
+    std::cout << std::endl; 
+    std::cout << "Qué te gustaría hacer: " << std::endl;
+    std::cout << "1. Elegir la función de ordenación" << std::endl;
+    std::cout << "2. Ordenar la secuencia de valores" << std::endl;
+    std::cout << "3. Salir del programa" << std::endl;
+    std::cout << "→ ";
+    std::cin >> option;    
+    int option_function;
+    switch (option) {
+      case 1:
+        std::cout << std::endl;
+        std::cout << "1. Ordenación por Selección" << std::endl; 
+        std::cout << "2. Ordenación por QuickSort" << std::endl; 
+        std::cout << "3. Ordenación por Incrementos Decrecientes" << std::endl; 
+        std::cout << "4. Ordenación por HeapSort" << std::endl; 
+        std::cout << "5. Ordenación por RadixSort" << std::endl;
+        std::cout << "→ ";
+        std::cin >> option_function;
+        switch(option_function) {
+          case 1:
+            sort.SetStrategy(new SortSelection<int>);
+            break;
+          case 2:
+            sort.SetStrategy(new QuickSort<int>);
+            break;
+          case 3:
+            sort.SetStrategy(new ShellSort<int>);
+            break;
+          case 4:
+            sort.SetStrategy(new HeapSort<int>);
+            break;
+          case 5:
+            sort.SetStrategy(new RadixSort<int>);
+            break;
+          default:
+            break;
+        }
+        break;   
+      case 2:
+          sort.go(sequence, size);
+        break;
+      case 3:
+        quit = true;
+        break;
+      default:
+        break;        
+    }
   }  
 
-  std::cout << "Secuencia inicial: ";
-  for (int i = 0; i < size; ++i) {
-    std::cout << sequence[i] << " ";
-  }
-  std::cout << std::endl;
-
-  function->sort(sequence, size);
-  
-  std::cout << std::endl << std::endl;
-  std::cout << "Secuencia ordenada: ";
-  for (int i = 0; i < size; ++i) {
-    std::cout << sequence[i] << " ";
-  }
-
-  delete function;
   std::cout << std::endl;
   std::cout << "Programa Finalizado" << std::endl;
   return 0;

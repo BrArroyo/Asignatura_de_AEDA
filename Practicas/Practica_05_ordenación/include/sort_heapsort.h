@@ -30,8 +30,9 @@
  * @brief Clase concreta para la ordenación por HeapSort
  * 
  */
-class HeapSort : public Sort {
-  void sort(int *sequence, int size) override {
+template<class Key>
+class HeapSort : public Sort<Key> {
+  void sort(Key *sequence, int size) override {
     heap_sort(sequence, size);
   }
 };

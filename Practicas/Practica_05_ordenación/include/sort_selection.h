@@ -30,8 +30,9 @@
  * @brief Clase concreta para la ordenación por selección 
  * 
  */
-class SortSelection : public Sort {
-  void sort(int *sequence, int size) override {
+template<class Key>
+class SortSelection : public Sort<Key> {
+  void sort(Key *sequence, int size) override {
     selection_sort(sequence, size);
   }
 };

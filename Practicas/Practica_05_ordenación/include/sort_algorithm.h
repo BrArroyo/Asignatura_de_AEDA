@@ -42,7 +42,7 @@ void selection_sort(Key *sec, int size) {
     sec[min] = sec[i];
     sec[i] = x;
     #ifdef DEBUG
-    std::cout << "\n" << i << " iteración: ";
+    std::cout << "\n" << i + 1 << " iteración: ";
     for (int j = 0; j < size; ++j) {
       std::cout << sec[j] << " ";
     }
@@ -77,6 +77,12 @@ void aux_quick_sort(Key *sec, int ini, int fin) {
       sec[f] = aux; 
       ++i;
       --f;
+      #ifdef DEBUG
+      for (int j = 0; j < fin; ++j) {
+        std::cout << sec[j] << " ";
+      }
+      std::cout << std::endl;
+      #endif 
     }
   }
 
@@ -207,11 +213,18 @@ void heap_sort(Key *sec, int size) {
   for (int i = size/2 - 1; i >= 0; --i) {
     down(i, sec, size);
   }
+  int j = 0;
   for (int i = size - 1; i > 0; --i) {
     Key aux = sec[0];
     sec[0] = sec[i];
     sec[i] = aux;
     down(0, sec, i);
+    #ifdef DEBUG
+    std::cout << "\n" << ++j << " iteración: ";
+    for (int j = 0; j < size; ++j) {
+      std::cout << sec[j] << " ";
+    }
+    #endif 
   }
 }
 
@@ -275,7 +288,14 @@ void countSort(Key *sec, int size, int exp) {
 template <typename Key>
 void radix_sort(Key *sec, int size) {
   Key max = getMax(sec, size);
+  int j = 0;
   for (int exp = 1; max/exp > 0; exp *= 10) {
     countSort(sec, size, exp);
+    #ifdef DEBUG
+    std::cout << "\n" << ++j << " iteración: ";
+    for (int j = 0; j < size; ++j) {
+      std::cout << sec[j] << " ";
+    }
+    #endif 
   } 
 }

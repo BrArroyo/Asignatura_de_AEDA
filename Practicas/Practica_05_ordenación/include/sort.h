@@ -29,9 +29,10 @@
  * @brief Clase abstracta para la ordenación de una secuencia  
  * 
  */
+template<class Key>
 class Sort {
   public:
-    virtual void sort(int *sequence, int size) = 0;
+    virtual void sort(Key *sequence, int size) = 0;
 };
 
 #endif

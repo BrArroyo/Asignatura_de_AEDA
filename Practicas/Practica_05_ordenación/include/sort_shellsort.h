@@ -30,8 +30,9 @@
  * @brief Clase concreta para la ordenación por ShellSort
  * 
  */
-class ShellSort : public Sort {
-  void sort(int *sequence, int size) override {
+template<class Key>
+class ShellSort : public Sort<Key> {
+  void sort(Key *sequence, int size) override {
     shell_sort(sequence, size);
   }
 };

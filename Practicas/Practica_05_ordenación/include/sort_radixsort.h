@@ -30,8 +30,9 @@
  * @brief Clase concreta para la ordenación por RadixSort
  * 
  */
-class RadixSort : public Sort {
-  void sort(int *sequence, int size) override {
+template<class Key>
+class RadixSort : public Sort<Key> {
+  void sort(Key *sequence, int size) override {
     radix_sort(sequence, size);
   }
 };

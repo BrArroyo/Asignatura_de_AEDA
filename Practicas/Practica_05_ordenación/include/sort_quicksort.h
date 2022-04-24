@@ -30,8 +30,9 @@
  * @brief Clase concreta para la ordenación por quicksort
  * 
  */
-class QuickSort : public Sort {
-  void sort(int *sequence, int size) override {
+template<class Key>
+class QuickSort : public Sort<Key> {
+  void sort(Key *sequence, int size) override {
     quick_sort(sequence, size);
   }
 };
