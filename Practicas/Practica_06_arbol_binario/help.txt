@@ -1,0 +1,42 @@
+La función del programa abe es la implementación de un árbol binario equilibrado mediante
+plantillas de clase
+ 
+Para compilar el programa usar la instrucción make en el directorio raíz del proyecto
+$ make
+ 
+Para ejecutar el programa realizar:
+$ ./abe 
+ 
+En caso de que sea necesario se puede acceder a la ayuda con
+$ ./abe [-h|--help] 
+
+El funcionamiento del programa principal es el siguiente:
+
+  a. Se utilizará Key = int para realizar la ejecución del programa
+
+  b. Se genera un ABE<Key> vacío
+
+  c. Se presenta un menú con las siguientes opciones:
+    - Salir
+    - Insertar Clave
+    - Buscar Clave
+    - Mostrar árbol inorden
+
+  d. Para cada inserción o búsqueda se solicita el valor de clave y se realiza la operación
+  en el ABE<Key>
+
+  e. Después de cada operación de inserción, se muestra ABE<Key> resultante mediante el recorrido
+  por niveles, utilizando la sobrecarga del operador.
+
+Ejemplo de visualización del ABE<int>:
+Árbol vacío
+Nivel 0: [.]
+
+Insertar: 30
+Nivel 0: [30]
+Nivel 1: [.] [.]
+
+Insertar: 25
+Nivel 0: [30]
+Nivel 1: [25] [.]
+Nivel 2: [.] [.]

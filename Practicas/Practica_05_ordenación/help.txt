@@ -1,0 +1,36 @@
+La función del programa sort es la implementación de métodos de ordenación
+ 
+Para compilar el programa usar la instrucción make en el directorio raíz del proyecto
+$ make
+ 
+Para ejecutar el programa realizar:
+$ ./sort 
+ 
+En caso de que sea necesario se puede acceder a la ayuda con
+$ ./sort [-h|--help] 
+
+El funcionamiento del programa principal es el siguiente:
+
+  a. Se utilizará Key = int para realizar la ejecución de los métodos.
+
+  b. Se pide al usuario el algoritmo a ejecutar y el tamaño de la secuencia (N).
+
+  c. Se pide al usuario que seleccione entre introducir los N valores manualmente opciones opciones opciones
+  o generarlos de forma aleatoria.
+
+  d. En el caso de elegir valores aleatorios, los números generados estarán entre el 1000 y el 9999.
+
+  e. Se realizará la ejecución del método seleccionado mostrando por pantalla la traza: se debe mostrar al menos cómo queda la
+  secuencia después de cada iteración del algoritmo. 
+
+Los métodos de ordenación implementados son:
+
+  - Selección
+
+  - QuickSort
+
+  - Por Incrementos Decrecientes
+
+  - HeapSort
+
+  - RadixSort 
