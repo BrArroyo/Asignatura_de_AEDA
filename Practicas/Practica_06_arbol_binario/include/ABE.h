@@ -47,7 +47,6 @@ class ABE : public AB<Key> {
  */
 template<class Key>
 bool ABE<Key>::insertar(const Key& k) {
-  std::cout << "Insertando valor: " << k << std::endl;
   if (buscar(k)) return false;
   
   if (this->GetRaiz() == NULL) {
@@ -63,8 +62,7 @@ bool ABE<Key>::insertar(const Key& k) {
  * @brief Método para buscar una clave en el árbol binario 
  */
 template<class Key>
-bool ABE<Key>::buscar(const Key& k) const {  
-  std::cout << "buscando la clave: " << k << std::endl;
+bool ABE<Key>::buscar(const Key& k) const {
   if (AuxBuscar(k, this->GetRaiz())) {
     return true;
   } else {

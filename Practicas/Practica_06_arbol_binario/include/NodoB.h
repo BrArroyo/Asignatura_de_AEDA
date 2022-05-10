@@ -30,7 +30,7 @@
 template<class Key>
 class NodoB {
   public:
-    NodoB(const int dato, NodoB *izdo=NULL, NodoB *dcho=NULL) :
+    NodoB(const int dato, NodoB<Key> *izdo=NULL, NodoB<Key> *dcho=NULL) :
       dato_(dato), izdo_(izdo), dcho_(dcho) {}
 
     Key GetDato() const { return dato_; }

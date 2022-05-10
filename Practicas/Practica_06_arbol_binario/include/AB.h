@@ -100,28 +100,41 @@ void AB<Key>::Procesa(Key dato) const {
 
 template<class Key>
 std::ostream& AB<Key>::operator>>(std::ostream& os) {
-  os << "\n";
-  inorden();
-  /*
-  std::queue<NodoB<Key>*> Q;  
+  
+  std::queue<std::pair<NodoB<Key>*, int>> Q;
+  std::pair<NodoB<Key>*, int> aux_Q;
   NodoB<Key> *nodo;
   int nivel, Nivel_actual = 0;
-  Q.push(raiz_);
   
-  
+
+  aux_Q.first = raiz_;
+  aux_Q.second = 0;
+  Q.push(aux_Q);
+
+  std::cout << "Nivel 0: ";  
   while (!Q.empty()) {
-    nodo = Q.front();
+    aux_Q = Q.front();
+    nodo = aux_Q.first;
+    nivel = aux_Q.second;
     Q.pop();
-    if(nivel > Nivel_actual) Nivel_actual = nivel;     //Incremento de nivel
-    if(nodo != NULL) {
-      Procesa(nodo->GetDato());
-      Q.push(nodo->GetIzdo());
-      Q.push(nodo->GetDcho());        
+
+    if(nivel > Nivel_actual) { //Incremento de nivel
+      Nivel_actual = nivel;
+      std::cout << "\nNivel " << Nivel_actual << ":";
+    }  
+
+    if(nodo != NULL) {      
+      std::cout << "[" << nodo->GetDato() << "]";
+      aux_Q.second = nivel + 1;
+      aux_Q.first = nodo->GetIzdo();
+      Q.push(aux_Q);
+      aux_Q.first = nodo->GetDcho();
+      Q.push(aux_Q);        
     }
     else {
       std::cout << "[.]";  //Subarbol vacío
     }    
-  }*/
+  }
   std::cout << std::endl;
 
   return os;
