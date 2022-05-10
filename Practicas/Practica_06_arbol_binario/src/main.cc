@@ -27,6 +27,7 @@
  *  
  * Historial de versiones:
  *   02/05/2022 - Ver 0.1 Creación y primera versión del código
+ *   10/05/2022 - Ver 1.0 versión terminada
  */
 
 #include <iostream>

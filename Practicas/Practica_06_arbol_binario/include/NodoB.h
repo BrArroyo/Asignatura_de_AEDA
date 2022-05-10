@@ -16,6 +16,7 @@
  * 
  * Historial de versiones:
  *   07/05/2022 - Ver 0.1 Ver 0.1 Creación y primera versión del código
+ *   10/05/2022 - Ver 1.0 versión terminada
  */
 
 #ifndef NODOB_H_
