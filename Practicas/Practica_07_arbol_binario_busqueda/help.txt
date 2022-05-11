@@ -1,0 +1,60 @@
+La función del programa abe es la implementación de un árbol binario de búsqueda mediante
+plantillas de clase
+ 
+Para compilar el programa usar la instrucción make en el directorio raíz del proyecto
+$ make
+ 
+Para ejecutar el programa realizar:
+$ ./abb 
+ 
+En caso de que sea necesario se puede acceder a la ayuda con
+$ ./abb [-h|--help] 
+
+El funcionamiento del programa principal es el siguiente:
+
+  a. Se utilizará Key = int para realizar la ejecución del programa
+
+  b. Se pide al usuario el tipo de árbol binario que quiere crear (ABE<Key> o ABB<Key>).
+
+  c. Se genera un AB<Key> vacío.
+
+  d. Se presenta un menú con las siguientes opciones:
+  
+    [0] Salir
+    [1] Insertar clave
+    [2] Buscar clave
+    [3] Eliminar clave
+    [4] Mostrar árbol inorden
+  
+  e. Para cada inserción, búsqueda o eliminación se solicita el valor de clave y se realiza la 
+  operación en el AB<Key>.
+
+  f. Después de cada operación de inserción o eliminación, se muestra el AB<Key>
+  resultante mediante el recorrido por niveles, utilizando la sobrecarga del operador.
+
+
+
+Ejemplo de visualización del ABB<int>:
+Árbol vacío
+Nivel 0: [.]
+
+Insertar: 30
+Nivel 0: [30]
+Nivel 1: [.] [.]
+
+Insertar: 25
+Nivel 0: [30]
+Nivel 1: [25] [.]
+Nivel 2: [.] [.]
+
+Insertar: 15
+Nivel 0: [30]
+Nivel 1: [25] [.]
+Nivel 2: [15] [.]
+Nivel 3: [.] [.]
+
+Insertar: 40
+Nivel 0: [30]
+Nivel 1: [25] [40]
+Nivel 2: [15] [.] [.] [.]
+Nivel 3: [.] [.]

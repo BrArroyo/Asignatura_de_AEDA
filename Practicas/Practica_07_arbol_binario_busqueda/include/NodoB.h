@@ -6,17 +6,17 @@
  * Grado en Ingeniería Informática
  * Asignatura: Algoritmos y Estructura de Datos Avanzados
  * Curso: 2º
- * Práctica 06: Implementación de árboles binarios equilibrados
+ * Práctica 07: Implementación de árboles binarios de búsqueda
  *
  * @author Bruno Lorenzo Arroyo Pedraza
  * @email alu0101123677@ull.edu.es
- * @date 07/05/2022  
+ * @date 10/05/2022  
  * 
  * @brief Implementación de la clase plantilla NodoB
  * 
  * Historial de versiones:
- *   07/05/2022 - Ver 0.1 Ver 0.1 Creación y primera versión del código
- *   10/05/2022 - Ver 1.0 versión terminada
+ *   10/05/2022 - Ver 0.1 Creación y primera versión del código
+ *   11/05/2022 - Ver 0.2 Añadir y buscar
  */
 
 #ifndef NODOB_H_
