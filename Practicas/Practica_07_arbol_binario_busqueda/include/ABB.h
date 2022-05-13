@@ -17,6 +17,7 @@
  * Historial de versiones:
  *   10/05/2022 - Ver 0.1 Creación y primera versión del código
  *   11/05/2022 - Ver 0.2 Añadir y buscar
+ *   13/05/2022 - Ver 1.0 finalizado
  */
 
 #ifndef ABB_H_
@@ -40,6 +41,8 @@ class ABB : public AB<Key> {
   protected:
     bool InsertarRama(NodoB<Key>* nodo, Key clave_dada);
     bool BuscarRama(NodoB<Key>* nodo, Key clave_dada) const; 
+    bool EliminarRama(NodoB<Key>* &nodo, Key clave_dada);
+    void Sustituye(NodoB<Key>* &eliminado, NodoB<Key>* &sust);
 };
 
 /**
@@ -101,7 +104,44 @@ bool ABB<Key>::BuscarRama(NodoB<Key>* nodo, Key clave_dada) const {
  */
 template<class Key>
 bool ABB<Key>::eliminar(const Key& k) {
-  return true;
+  return EliminarRama(this->GetRaiz(), k);
+}
+
+/**
+ * @brief Método auxiliar para eliminar una clave en el árbol binario de búsqueda 
+ */
+template<class Key>
+bool ABB<Key>::EliminarRama(NodoB<Key>* &nodo, Key clave_dada) {
+  if (nodo == NULL) return false ;
+  if (clave_dada < nodo->GetDato()) {
+    return EliminarRama(nodo->GetIzdo(), clave_dada);
+  }  
+  else if (clave_dada > nodo->GetDato()) {
+    return EliminarRama(nodo->GetDcho(), clave_dada);
+  } else {  //clave_dada == nodo->clave
+    NodoB<Key>* Eliminado = nodo;
+    if (nodo->GetDcho() == NULL) { 
+      nodo = nodo->GetIzdo();
+    } else if (nodo->GetIzdo() == NULL) {
+      nodo = nodo->GetIzdo();
+    } else {
+      Sustituye(Eliminado,  nodo->GetIzdo());
+    }
+    delete (Eliminado);
+    return true;
+  }
+  return false;
+} 
+
+template<class Key>
+void ABB<Key>::Sustituye(NodoB<Key>* &eliminado, NodoB<Key>* &sust) {
+  if (sust->GetDcho() != NULL) { 
+    Sustituye(eliminado, sust->GetDcho());
+  } else {
+    eliminado->SetDato(sust->GetDato());
+    eliminado = sust ;
+    sust = sust->GetIzdo();
+  } 
 }
 
 

@@ -17,6 +17,7 @@
  * Historial de versiones:
  *   10/05/2022 - Ver 0.1 Creación y primera versión del código
  *   11/05/2022 - Ver 0.2 Añadir y buscar
+ *   13/05/2022 - Ver 1.0 finalizado
  */
 
 #ifndef ABE_H_
@@ -76,7 +77,6 @@ bool ABE<Key>::buscar(const Key& k) const {
  */
 template<class Key>
 bool ABE<Key>::eliminar(const Key& k) {
-  throw std::system_error(errno, std::system_category(), "no se pudo realizar el eliminar");
   return false;
 } 
 

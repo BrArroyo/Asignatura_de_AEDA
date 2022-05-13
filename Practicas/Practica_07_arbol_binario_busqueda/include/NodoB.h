@@ -17,6 +17,7 @@
  * Historial de versiones:
  *   10/05/2022 - Ver 0.1 Creación y primera versión del código
  *   11/05/2022 - Ver 0.2 Añadir y buscar
+ *   13/05/2022 - Ver 1.0 finalizado
  */
 
 #ifndef NODOB_H_
@@ -37,6 +38,8 @@ class NodoB {
     Key GetDato() const { return dato_; }
     NodoB<Key>* GetIzdo() const { return izdo_; }   
     NodoB<Key>* GetDcho() const { return dcho_; }
+    NodoB<Key>*& GetIzdo()  { return izdo_; }   
+    NodoB<Key>*& GetDcho()  { return dcho_; }
     
     void SetDato(Key dato) { dato_ = dato; }
     void SetIzdo(NodoB<Key> *izdo) { izdo_ = izdo; } 

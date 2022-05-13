@@ -17,6 +17,7 @@
  * Historial de versiones:
  *   10/05/2022 - Ver 0.1 Creación y primera versión del código
  *   11/05/2022 - Ver 0.2 Añadir y buscar
+ *   13/05/2022 - Ver 1.0 finalizado
  */
 
 #ifndef AB_H_
@@ -48,7 +49,8 @@ class AB {
     std::ostream& operator>>(std::ostream& os);
 
   protected:
-    NodoB<Key> *GetRaiz() const { return raiz_; }
+    NodoB<Key>* GetRaiz() const { return raiz_; }
+    NodoB<Key>*& GetRaiz() { return raiz_; }
     void SetRaiz(NodoB<Key> *raiz) { raiz_ = raiz; } 
 
   private:
