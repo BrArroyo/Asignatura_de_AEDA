@@ -16,6 +16,7 @@
  * 
  * Historial de versiones:
  *   25/05/2022 - Ver 0.1 Creación y primera versión del código
+ *   26/05/2022 - Ver 1.0 Programa terminado
  */
 
 #ifndef AVL_H_
@@ -43,13 +44,13 @@ class AVL : public AB<Key> {
     NodoAVL<Key>* GetRootAVL() const { return reinterpret_cast<NodoAVL<Key>*>(this->GetRaiz()); }
     NodoAVL<Key>*& GetRootAVL() { return reinterpret_cast<NodoAVL<Key>*&>(this->GetRaiz()); }
 
-    bool inserta_bal(NodoAVL<Key>* &nodo, NodoAVL<Key>* nuevo, bool& crece);
+    void inserta_bal(NodoAVL<Key>* &nodo, NodoAVL<Key>* nuevo, bool& crece, bool& introduce);
     void insert_re_balancea_izda(NodoAVL<Key>* &nodo, bool& crece);
     void insert_re_balancea_dcha(NodoAVL<Key>* &nodo, bool& crece);
 
     bool BuscarRama(NodoAVL<Key>* nodo, Key clave_dada) const;
 
-    void EliminaRama(NodoAVL<Key>* &nodo, Key clave_dada, bool& decrece);
+    void EliminaRama(NodoAVL<Key>* &nodo, Key clave_dada, bool& decrece, bool& elimina);
     void Sustituye(NodoAVL<Key>* &eliminado, NodoAVL<Key>* &sust, bool &decrece);
     void eliminar_re_balancea_izda(NodoAVL<Key>* &nodo, bool& decrece);
     void eliminar_re_balancea_dcha(NodoAVL<Key>* &nodo, bool& decrece);
@@ -67,27 +68,28 @@ template<class Key>
 bool AVL<Key>::insertar(const Key& k) {
   NodoAVL<Key>* nuevo = new NodoAVL<Key>(k);
   bool crece = false;
-  inserta_bal(GetRootAVL(), nuevo, crece);
-  //delete nuevo;
-  return true;
+  bool introduce = false;
+  inserta_bal(GetRootAVL(), nuevo, crece, introduce);
+  return introduce;
 }
 
 /**
  * @brief Inserta un nodo nuevo de manera recursiva  
  */
 template<class Key>
-bool AVL<Key>::inserta_bal(NodoAVL<Key>* &nodo, NodoAVL<Key>* nuevo, bool& crece) {
+void AVL<Key>::inserta_bal(NodoAVL<Key>* &nodo, NodoAVL<Key>* nuevo, bool& crece, bool& introduce) {
   if (nodo == NULL) {
     nodo = nuevo;
-    crece = true;    
+    crece = true;
+    introduce = true;    
   } 
   if (nodo->GetDato() == nuevo->GetDato()) {
-    return false;
+    return;
   } else if(nuevo->GetDato() < nodo->GetDato()) {
-    inserta_bal(nodo->GetIzdoAVL(), nuevo, crece);
+    inserta_bal(nodo->GetIzdoAVL(), nuevo, crece, introduce);
     if (crece) insert_re_balancea_izda(nodo, crece);
   } else {
-    inserta_bal(nodo->GetDchoAVL(), nuevo, crece);
+    inserta_bal(nodo->GetDchoAVL(), nuevo, crece, introduce);
     if (crece) insert_re_balancea_dcha(nodo, crece);
   }
 }
@@ -168,21 +170,22 @@ bool AVL<Key>::BuscarRama(NodoAVL<Key>* nodo, Key clave_dada) const {
 template<class Key>
 bool AVL<Key>::eliminar(const Key& k) {
   bool decrece = false;
-  EliminaRama(GetRootAVL(), k, decrece);
-  return true;
+  bool elimina = false;
+  EliminaRama(GetRootAVL(), k, decrece, elimina);
+  return elimina;
 }
 
 /**
  * @brief Elimina un nodo recursivamente
  */
 template<class Key>
-void AVL<Key>::EliminaRama(NodoAVL<Key>* &nodo, Key clave_dada, bool& decrece) {
+void AVL<Key>::EliminaRama(NodoAVL<Key>* &nodo, Key clave_dada, bool& decrece, bool& elimina) {
   if (nodo == NULL) return;
   if (clave_dada < nodo->GetDato()) {
-    EliminaRama(nodo->GetIzdoAVL(), clave_dada, decrece);
+    EliminaRama(nodo->GetIzdoAVL(), clave_dada, decrece, elimina);
     if (decrece) eliminar_re_balancea_izda(nodo, decrece);
   } else if (clave_dada > nodo->GetDato()) {
-    EliminaRama(nodo->GetDchoAVL(), clave_dada, decrece);
+    EliminaRama(nodo->GetDchoAVL(), clave_dada, decrece, elimina);
     if (decrece) eliminar_re_balancea_dcha(nodo, decrece);
   } else {
     NodoAVL<Key>* Eliminado = nodo;
@@ -196,6 +199,7 @@ void AVL<Key>::EliminaRama(NodoAVL<Key>* &nodo, Key clave_dada, bool& decrece) {
       Sustituye(Eliminado, nodo->GetIzdoAVL(), decrece);
       if (decrece) eliminar_re_balancea_izda(nodo, decrece);  
     }
+    elimina = true;
     delete Eliminado;
   }
 }
@@ -275,9 +279,11 @@ void AVL<Key>::eliminar_re_balancea_dcha(NodoAVL<Key>* &nodo, bool& decrece) {
  */
 template<class Key>
 void AVL<Key>::RotacionII(NodoAVL<Key>* &nodo) {
+  #ifdef DEBUG
   std::cout << "Desbalanceo" << std::endl;
   this->operator>>(std::cout);
-  std::cout << "Rotación II en [" << nodo->GetDato() << "]" << std::endl; 
+  std::cout << "Rotación II en [" << nodo->GetDato() << "]" << std::endl;
+  #endif  
 
   NodoAVL<Key>* nodo1 = nodo->GetIzdoAVL();
   nodo->SetIzdo(nodo1->GetDcho());
@@ -297,9 +303,11 @@ void AVL<Key>::RotacionII(NodoAVL<Key>* &nodo) {
  */
 template<class Key>
 void AVL<Key>::RotacionDD(NodoAVL<Key>* &nodo) {
+  #ifdef DEBUG
   std::cout << "Desbalanceo" << std::endl;
   this->operator>>(std::cout);
-  std::cout << "Rotación DD en [" << nodo->GetDato() << "]" << std::endl; 
+  std::cout << "Rotación DD en [" << nodo->GetDato() << "]" << std::endl;
+  #endif 
 
   NodoAVL<Key>* nodo1 = nodo->GetDchoAVL();
   nodo->SetDcho(nodo1->GetIzdoAVL());
@@ -319,9 +327,11 @@ void AVL<Key>::RotacionDD(NodoAVL<Key>* &nodo) {
  */
 template<class Key>
 void AVL<Key>::RotacionID(NodoAVL<Key>* &nodo) {
+  #ifdef DEBUG
   std::cout << "Desbalanceo" << std::endl; 
   this->operator>>(std::cout);
-  std::cout << "Rotación ID en [" << nodo->GetDato() << "]" << std::endl; 
+  std::cout << "Rotación ID en [" << nodo->GetDato() << "]" << std::endl;
+  #endif  
 
   NodoAVL<Key>* nodo1 = nodo->GetIzdoAVL();
   NodoAVL<Key>* nodo2 = nodo1->GetDchoAVL();
@@ -348,9 +358,11 @@ void AVL<Key>::RotacionID(NodoAVL<Key>* &nodo) {
  */
 template<class Key>
 void AVL<Key>::RotacionDI(NodoAVL<Key>* &nodo) {
+  #ifdef DEBUG
   std::cout << "Desbalanceo" << std::endl; 
   this->operator>>(std::cout);
   std::cout << "Rotación DI en [" << nodo->GetDato() << "]"<< std::endl; 
+  #endif  
 
   NodoAVL<Key>* nodo1 = nodo->GetDchoAVL();
   NodoAVL<Key>* nodo2 = nodo1->GetIzdoAVL();

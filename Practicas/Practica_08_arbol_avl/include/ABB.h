@@ -16,6 +16,7 @@
  * 
  * Historial de versiones:
  *   25/05/2022 - Ver 0.1 Creación y primera versión del código
+ *   26/05/2022 - Ver 1.0 Programa terminado
  */
 
 #ifndef ABB_H_

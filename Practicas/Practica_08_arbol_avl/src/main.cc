@@ -27,6 +27,7 @@
  *  
  * Historial de versiones:
  *   25/05/2022 - Ver 0.1 Creación y primera versión del código
+ *   26/05/2022 - Ver 1.0 Programa terminado
  */
 
 #include <iostream>
@@ -131,12 +132,6 @@ int protected_main(int argc, char * argv[]) {
         quit = true;        
         break;   
       case 1:
-        // srand(time(NULL));
-        // for (int i = 0; i < 1000;  ++i) {
-        //   value = rand()%100;
-        //   ab->insertar(value);  
-        // }
-        // ab->operator>>(std::cout); 
         std::cout << "¿Que clave quieres insertar?" << std::endl;
         std::cout << "→  ";
         std::cin >> value;
@@ -160,12 +155,6 @@ int protected_main(int argc, char * argv[]) {
         std::cout << std::endl;
         break;
       case 3:
-        // srand(time(NULL));
-        // for (int i = 0; i < 1000;  ++i) {
-        //   value = rand()%100;
-        //   ab->eliminar(value);  
-        // }
-        // ab->operator>>(std::cout); 
         std::cout << "¿Que clave quieres eliminar?" << std::endl;
         std::cout << "→  ";
         std::cin >> value;
