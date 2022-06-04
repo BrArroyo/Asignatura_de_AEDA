@@ -14,3 +14,6 @@ make: ejercicio_1.cc
 
 ordenacion: metodos_ordenacion.cc
 	g++ -std=c++11 metodos_ordenacion.cc -o ordenacion	
+
+busqueda: ejercicios_busqueda.cc
+	g++ -std=c++11 ejercicios_busqueda.cc -o busqueda	
